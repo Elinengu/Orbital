@@ -1,0 +1,6 @@
+{
+    "git.enabled": true,
+    "explorer.excludeGitIgnore": false,
+    "search.useGlobalIgnoreFiles": false,
+    "workbench.localHistory.enabled": false
+}
