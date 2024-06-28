@@ -1,1 +1,2 @@
 testing on 28/6
+nodemon //automatically restart if changes r detected in code
