@@ -1,2 +1,9 @@
 testing on 28/6
 nodemon //automatically restart if changes r detected in code
+password for mongoDB testing database : test123
+
+module.exports = { postRouter };
+const { postRouter } = require('./postRouter'); // Destructure the object to get postRouter (in app/index.js)
+
+module.exports = postRouter;
+const postRouter = require('./postRouter'); // Import the router directly

@@ -7,7 +7,9 @@ const connectDB = async () => {
     const connection = await mongoose.connect(
       //test123 is the password here
       //testdb is the database na
-      "mongodb+srv://Eline:test123@cluster0.o8crjjg.mongodb.net/testdb?retryWrites=true&w=majority&appName=Cluster0"
+      //at home
+      //"mongodb+srv://Eline:test123@cluster0.o8crjjg.mongodb.net/testdb?retryWrites=true&w=majority&appName=Cluster0"
+      "mongodb+srv://Eline:test123@cluster0.o8crjjg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     );
     console.log("MongoDB Connected");
   } catch (error) {

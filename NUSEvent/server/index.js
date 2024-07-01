@@ -3,7 +3,9 @@ const app = express();
 const port = 5000;
 const connectDB = require("./db.js");
 
-app.use(express.json());
+require("./models/post");
+app.use(express.json()); //middleware to take the incoming request and pass it to json
+app.use(require("./routes/posts/posts"));
 
 connectDB();
 

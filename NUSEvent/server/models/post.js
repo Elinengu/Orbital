@@ -23,3 +23,8 @@ const postSchema = Schema({
 });
 
 module.exports = mongoose.model("Post", postSchema);
+//mongoose.model("Post", postSchema);
+/* in other file:
+require('.models/post')
+mongoose.model("Post")
+*/
