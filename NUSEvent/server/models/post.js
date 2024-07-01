@@ -13,12 +13,12 @@ const postSchema = Schema({
     requred: true,
   },
   photo: {
-    type: Buffer,
+    type: String,
     default: "no photo",
   },
   postedBy: {
     type: ObjectId,
-    ref: "Organiser",
+    ref: "Organiser", //refer to
   },
 });
 

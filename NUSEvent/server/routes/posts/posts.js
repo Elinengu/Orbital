@@ -2,6 +2,7 @@ const express = require("express");
 const { createPost } = require("../../controller/postController");
 const postRouter = express.Router();
 
+//to add the login feature, add middleware here later
 postRouter.get("/create-post", (req, res) => {
   res.send("this is a page to create post yeaaah XD");
 });

@@ -7,3 +7,26 @@ const { postRouter } = require('./postRouter'); // Destructure the object to get
 
 module.exports = postRouter;
 const postRouter = require('./postRouter'); // Import the router directly
+
+//usage of promise in javascript
+User.findOne({ email: email })
+  .then((existingUser) => {
+    if (existingUser) {
+      return res.status(422).json({ error: "User already exists" });
+    }
+    // If the user does not exist, create a new user
+    const newUser = new User({ email, password });
+    return newUser.save();
+  })
+
+  //the existingUser here is returned by a promise 
+  -> if an email found, it would be passed into it (true)
+  -> if not, then null would be passed into it (false)
+
+  //sth that hasnt been implemented but worthy to note it down
+  User.findById(_id).then(userdata => {
+    req.user = userdata
+    next()
+  })
+-> this next() should be put inside the blk cause this is a promise 
+-> if the next() is outside the blk, the promise hasnt returned a stuff but next() dy finish executing  

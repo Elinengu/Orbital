@@ -3,12 +3,16 @@ const Post = require("../models/post");
 exports.createPost = async (req, res) => {
   const { title, description, photo } = req.body;
 
-  if (!title || !description || !photo) {
+  if (!title || !description) {
     return res.status(400).json({ msg: "Please add all the required fields" });
   }
 
+  //test the Organiser later
+  //console.log(req.organiser)
+  //res.send("ok")
+
   const post = new Post({
-    title,
+    title, //key & value r same (original-> title ： title)
     description,
     photo,
     postedBy: req.Organiser,
@@ -27,7 +31,8 @@ exports.createPost = async (req, res) => {
     });
 };
 
-// exports.getAllPosts = asyn(req, res) => {
-//     await Post.find({})
-//     .populate
-// }
+/*exports.getAllPosts = asyn(req, res) => {
+    await Post.find({})
+    .populate
+}
+*/
