@@ -1,0 +1,19 @@
+.navbar {
+  background-color: #eceff1;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: fit-content;
+  /*evenly distributing the space between the elements with space-btw*/
+  z-index: 1;
+}
+
+.navbar-logo {
+  width: 10vw; /* 10% of the viewport width */
+  max-width: 150px; /* maximum width to ensure it doesn't get too large on big screens */
+  height: auto; /* maintains the aspect ratio */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

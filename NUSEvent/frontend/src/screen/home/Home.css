@@ -1,0 +1,24 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-navbar {
+  display: 0.1;
+}
+
+.home-gallery {
+  flex: 0.9;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 18px;
+  justify-content: space-around;
+  border-radius: 80px;
+}
+
+.item {
+  width: 30%;
+}

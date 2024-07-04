@@ -16,9 +16,12 @@ const postSchema = Schema({
     type: String,
     default: "no photo",
   },
-  postedBy: {
-    type: ObjectId,
-    ref: "Organiser", //refer to
+  organisedBy: {
+    // type: ObjectId,
+    // ref: "Organiser", //refer to
+    //after login feature settle
+    type: String,
+    default: "NUS",
   },
 });
 

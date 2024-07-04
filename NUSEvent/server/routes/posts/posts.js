@@ -1,5 +1,5 @@
 const express = require("express");
-const { createPost } = require("../../controller/postController");
+const { createPost, getAllPosts } = require("../../controller/postController");
 const postRouter = express.Router();
 
 //to add the login feature, add middleware here later
@@ -8,6 +8,8 @@ postRouter.get("/create-post", (req, res) => {
 });
 
 postRouter.post("/create-post", createPost);
+
+postRouter.get("/", getAllPosts);
 
 // postRouter.post("create-post", (req, res) => {
 //   res.json({ message: "successfully posted" });

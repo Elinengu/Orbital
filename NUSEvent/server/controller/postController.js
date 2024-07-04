@@ -15,7 +15,8 @@ exports.createPost = async (req, res) => {
     title, //key & value r same (original-> title ： title)
     description,
     photo,
-    postedBy: req.Organiser,
+    //postedBy: req.Organiser,
+    organisedBy,
   });
 
   post
@@ -31,8 +32,15 @@ exports.createPost = async (req, res) => {
     });
 };
 
-/*exports.getAllPosts = asyn(req, res) => {
-    await Post.find({})
-    .populate
-}
-*/
+exports.getAllPosts = async (req, res) => {
+  Post.find({})
+    .then((posts) => {
+      res.json({ posts });
+    })
+    .catch((err) => {
+      console.log(err);
+      res
+        .status(500)
+        .json({ msg: "An error occurred while fetching the posts" });
+    });
+};

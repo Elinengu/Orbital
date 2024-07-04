@@ -1,3 +1,4 @@
 delay todo
 1. change the default photo for the post.js models
 2. create Organiser models for posting stuff lol or else just put text first
+3. consider adding a side nav later if got time for mobile access
