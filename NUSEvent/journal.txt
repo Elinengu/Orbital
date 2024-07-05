@@ -30,3 +30,6 @@ User.findOne({ email: email })
   })
 -> this next() should be put inside the blk cause this is a promise 
 -> if the next() is outside the blk, the promise hasnt returned a stuff but next() dy finish executing  
+
+card created using MUI
+navbar originally created using Materialize then realise dont use it is faster

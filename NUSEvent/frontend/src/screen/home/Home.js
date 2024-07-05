@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import Navbar from "../../components/Navbar";
+import Post from "../posts/post";
 //the page that displays all the posts
 //following the tut from CODERSNEVERQUIT
 //the Navbar/ accidentally put in App.js later rmb to move it back here
@@ -8,6 +9,29 @@ import Navbar from "../../components/Navbar";
 const Home = () => {
   return (
     <div className="home">
+      <div className="home-gallery">
+        <div className="gallery">
+          <div className="item-container">
+            <Post />
+          </div>
+          <div className="item-container">
+            <Post />
+          </div>
+          <div className="item-container">
+            <Post />
+          </div>
+          <div className="item-container">
+            <Post />
+          </div>
+          <div className="item-container">
+            <Post />
+          </div>
+          <div className="item-container">
+            <Post />
+          </div>
+        </div>
+        s
+      </div>
       <div className="home-gallery">
         <div className="gallery">
           <div className="item-container">
