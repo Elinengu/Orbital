@@ -3,22 +3,52 @@
   flex-direction: column;
 }
 
-.home-navbar {
-  display: 0.1;
-}
-
 .home-gallery {
-  flex: 0.9;
+  max-width: 80%;
+  margin: 0px 15%;
 }
 
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  margin: 18px;
+  margin: 10% 0px;
   justify-content: space-around;
-  border-radius: 80px;
+  height: fit-content;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    flex-direction: column; /* Stack items vertically */
+    margin: 5px 0;
+  }
+
+  .item-container {
+    flex: 1 1 100%; /* Take full width */
+    margin: 5px 0;
+  }
+
+  .item {
+    width: 100%;
+  }
+}
+
+.item-container {
+  flex: 1 1 30%; /* Adjust the basis as needed for larger screens */
+  margin: 10px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.item-container img {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block;
 }
 
 .item {
   width: 30%;
+  display: flex;
+  justify-content: space-around;
+  margin: 18px 0px;
 }
