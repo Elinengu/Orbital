@@ -13,14 +13,23 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Box, Container } from "@mui/material";
 import mao from "../../images/bichimao1.jpg";
 import CheckedIcon from "./checkedIcon";
-import { styled } from "@mui/system";
 
 const label = { inputProps: { "aria-label": "add to bookmarked" } };
 
 export default function Post() {
   return (
-    <Box>
-      <Card>
+    <Box sx={{ marginBottom: 2, width: "100%" }}>
+      <Card
+        sx={{
+          borderRadius: 2,
+          // boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          transition: "transform 0.2s",
+          "&:hover": {
+            transform: "translateY(-5px)",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+          },
+        }}
+      >
         <CardHeader
           avatar={
             <Avatar
@@ -28,6 +37,9 @@ export default function Post() {
                 bgcolor: red[500],
                 padding: 0,
                 marginRight: 0,
+                width: 24,
+                height: 24,
+                fontSize: 10,
               }}
               aria-label="recipe"
             >
@@ -36,13 +48,27 @@ export default function Post() {
           }
           sx={{
             padding: 1, // Reduce padding to make the header section smaller
+            paddingTop: 1,
+            paddingBottom: 0,
+            paddingRight: 0,
+            paddingLeft: 1.5,
             "& .MuiCardHeader-content": {
-              marginLeft: 1, // Adjust margin between Avatar and content
+              marginLeft: 0, // Adjust margin between Avatar and content
+              maxWidth: "calc(100% - 32px)",
             },
           }}
-          titleTypographyProps={{ variant: "body2", marginLeft: "0" }} // Use h6 or smaller variant
-          subheaderTypographyProps={{ variant: "overline", marginLeft: "0" }} // Adjust subheader size if needed
-          title="Shrimp and Chorizo Paella"
+          titleTypographyProps={{
+            variant: "subtitle2",
+            marginLeft: "0",
+            sx: {
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              maxWidth: "calc(100% - 32px)",
+            },
+          }} // Use h6 or smaller variant
+          subheaderTypographyProps={{ variant: "caption", marginLeft: "0" }} // Adjust subheader size if needed
+          title="Shrimp and Chorizo Paella testing testing"
           subheader="September 14, 2016"
 
           // title="Shrimp and Chorizo Paella" //organiser or postedBy
