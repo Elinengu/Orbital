@@ -5,7 +5,7 @@ import Post from "../posts/post";
 import { Grid } from "@mui/material";
 //the page that displays all the posts
 //following the tut from CODERSNEVERQUIT
-//the Navbar/ accidentally put in App.js later rmb to move it back here
+//the Navbar/ accidentally put in App.js later rmb to move it back here from "@mui/material";
 
 const Home = () => {
   return (
@@ -20,6 +20,10 @@ const Home = () => {
       paddingLeft={15}
       paddingRight={15}
       spacing={2}
+      sx={{
+        px: { xs: 1, sm: "auto", md: 12 },
+        py: { xs: 4, md: 5 },
+      }}
     >
       {/*a page is divided into 12 columns*/}
       {/* <Grid item xs={12} sm={6} md={3}> */}
