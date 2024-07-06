@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import { grey, lightBlue, red } from "@mui/material/colors";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Box, Container } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
 import mao from "../../images/bichimao1.jpg";
 import CheckedIcon from "./checkedIcon";
 
@@ -82,6 +82,9 @@ export default function Post() {
           alt="OH NO WHERE'S MY BICHI MAO?"
         />
         <CardContent>
+          <Typography gutterBottom variant="h6" component="div">
+            Lizard
+          </Typography>
           <Typography variant="body2" color="text.secondary">
             This impressive paella is a perfect party dish and a fun meal to
             cook together with your guests. Add 1 cup of frozen peas along with
