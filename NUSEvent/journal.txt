@@ -37,3 +37,7 @@ navbar originally created using Materialize then realise dont use it is faster
 6 July 2024
  - added hover & shadow function to cards
  - realise using MUI grid function is easier to control & change the orginal codes
+
+ 8 July 2024
+ - Template Literals
+ -  label={`Date ${index + 1}`}
