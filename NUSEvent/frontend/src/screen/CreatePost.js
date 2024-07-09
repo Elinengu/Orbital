@@ -14,6 +14,13 @@ import FlexibleDatePicker from "../components/FlexibleDatePicker";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import FileUploadButton from "../components/FileUploadButton";
 
+{
+  /*frontend to backend integration*/
+}
+
+{
+  /*frontend design*/
+}
 const CreatePost = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -78,6 +85,17 @@ const CreatePost = () => {
             We will send updates occasionally.
           </DialogContentText> */}
           <Stack spacing={2} margin={2}>
+            <TextField
+              autoFocus
+              required
+              margin="dense"
+              id="host organisation"
+              name="host organisation"
+              label="Host Organisation"
+              type="host organisation"
+              fullWidth
+              variant="standard"
+            />
             <TextField
               autoFocus
               required

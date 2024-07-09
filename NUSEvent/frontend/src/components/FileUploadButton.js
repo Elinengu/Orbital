@@ -26,6 +26,8 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 const FileUploadButton = () => {
+  const [draggingIndex, setDraggingIndex] = useState(null);
+
   const [images, setImages] = useState([]);
 
   const handleFileChange = (event) => {
@@ -37,6 +39,10 @@ const FileUploadButton = () => {
     setImages([...images, ...newImages]);
   };
 
+  const handleDragStart = (item) => {
+    setDraggingIndex(item.source.index);
+  };
+
   const handleDragEnd = (result) => {
     if (!result.destination) return; // If no valid destination, return
 
@@ -45,6 +51,7 @@ const FileUploadButton = () => {
     items.splice(result.destination.index, 0, reorderedItem);
 
     setImages(items);
+    setDraggingIndex(null);
   };
 
   const handleRemoveImage = (index) => {
@@ -70,7 +77,19 @@ const FileUploadButton = () => {
       wrap="wrap"
     >
       {/* <Grid item xs={12} md={8}> */}
-      <Grid item xs={12}>
+      <Grid
+        item
+        xs={12}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-evenly",
+          // alignItems: "center",
+          gap: "8px",
+          padding: "8px",
+          flexWrap: "wrap",
+        }}
+      >
         {/* Upload Button */}
         <Button
           component="label"
@@ -86,17 +105,12 @@ const FileUploadButton = () => {
         </Button>
 
         {/* Image List and Drag-and-Drop Context */}
-        <List
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "8px",
-            padding: "8px",
-            flexWrap: "wrap",
-          }}
-        >
-          <DragDropContext onDragEnd={handleDragEnd}>
-            <Droppable droppableId="droppable">
+        <List>
+          <DragDropContext
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+          >
+            <Droppable droppableId="drop" type="group">
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
                   {/* Render Uploaded Images */}
@@ -111,6 +125,13 @@ const FileUploadButton = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
+                          style={{
+                            ...provided.draggableProps.style, // else animation dissapear
+                            background:
+                              draggingIndex === index
+                                ? "#f4f4f4"
+                                : "transparent",
+                          }}
                         >
                           {/* Individual Image Item */}
                           <ListItem
