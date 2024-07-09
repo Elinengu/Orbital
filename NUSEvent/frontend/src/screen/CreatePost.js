@@ -13,15 +13,49 @@ import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
 import FlexibleDatePicker from "../components/FlexibleDatePicker";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import FileUploadButton from "../components/FileUploadButton";
+import { json } from "react-router-dom";
 
-{
-  /*frontend to backend integration*/
-}
-
-{
-  /*frontend design*/
-}
 const CreatePost = () => {
+  /*frontend to backend integration*/
+  const [PostedBy, setPostedBy] = React.useState("");
+  const [Title, setTitle] = React.useState("");
+  const [Description, setDescription] = React.useState("");
+  const [Images, setImages] = React.useState("");
+
+  const postDetails = () => {
+    const data = FormData();
+    data.append("file", "images");
+    data.append("upload_preset", "NUSEvent");
+    data.append("could_name", "nusevent");
+    fetch(
+      "CLOUDINARY_URL=cloudinary://935293876958359:AHaMIT4pt6LnZVheBzV3pDRWlLQ@nusevent/images/upload",
+      {
+        method: "post",
+        body: data,
+      }
+    )
+      .then((res) => {
+        res.json();
+      })
+      .then((data) => console.log(data))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const postData = () => {
+    fetch("http://localhost:5000/create-post", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ PostedBy, Title, Description }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error:", error));
+  };
+
+  /*frontend design*/
+
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -66,12 +100,15 @@ const CreatePost = () => {
         //maxWidth
         PaperProps={{
           component: "form",
-          onSubmit: (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const formJson = Object.fromEntries(formData.entries());
-            const email = formJson.email;
-            console.log(email);
+          // onSubmit: (event) => {
+          //   event.preventDefault();
+          //   const formData = new FormData(event.currentTarget);
+          //   const formJson = Object.fromEntries(formData.entries());
+          //   const email = formJson.email;
+          //   console.log(email);
+          onSubmit: () => {
+            postData();
+            postDetails();
             handleClose();
           },
         }}
@@ -89,38 +126,45 @@ const CreatePost = () => {
               autoFocus
               required
               margin="dense"
-              id="host organisation"
-              name="host organisation"
+              id="postedBy"
+              name="PostedBy" //input field
               label="Host Organisation"
-              type="host organisation"
+              type="text"
               fullWidth
               variant="standard"
+              value={PostedBy}
+              onChange={(e) => setPostedBy(e.target.value)}
             />
             <TextField
               autoFocus
               required
               margin="dense"
-              id="name"
+              id="title"
               name="title"
               label="Title"
-              type="title"
+              type="text"
               fullWidth
               variant="standard"
+              value={Title}
+              onChange={(e) => setTitle(e.target.value)}
             />
             <FlexibleDatePicker />
-            <FileUploadButton />
+            <FileUploadButton Images={Images} setImages={setImages} />
             <TextField
               required
               label="Description"
               placeholder="put your description here"
               multiline
               minRows={4}
+              value={Description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </Stack>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Submit</Button>{" "}
+          {/*OnSubmit is attached directly to paper component */}
         </DialogActions>
       </Dialog>
     </React.Fragment>

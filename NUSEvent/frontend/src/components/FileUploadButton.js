@@ -160,8 +160,12 @@ const FileUploadButton = () => {
                               Replace
                               <VisuallyHiddenInput
                                 type="file"
-                                onChange={(e) =>
-                                  handleReplaceImage(index, e.target.files[0])
+                                onChange={
+                                  (e) =>
+                                    handleReplaceImage(
+                                      index,
+                                      e.target.files[0]
+                                    ) /*first file selected by the user */
                                 }
                               />
                             </Button>
