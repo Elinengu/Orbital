@@ -77,8 +77,7 @@ export default function Post() {
         <CardMedia
           component="img"
           height="20%"
-          img
-          src={mao}
+          image={mao}
           alt="OH NO WHERE'S MY BICHI MAO?"
         />
         <CardContent>

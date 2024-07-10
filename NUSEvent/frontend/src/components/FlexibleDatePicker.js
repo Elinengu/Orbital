@@ -46,7 +46,8 @@ function FlexibleDatePicker() {
           onChange={(newDate) => {
             setSelectedDate(newDate);
           }}
-          renderInput={(params) => <TextField {...params} />}
+          // renderInput={(params) => <TextField {...params} />}
+          slotProps={{ textField: { variant: "outlined" } }}
         />
         <FormControlLabel
           control={
@@ -60,7 +61,6 @@ function FlexibleDatePicker() {
         {isMultiple &&
           multipleDates.map((date, index) => (
             <Box
-              fullWidth
               width="100%"
               key={index}
               sx={{

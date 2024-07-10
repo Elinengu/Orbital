@@ -23,7 +23,7 @@ const CreatePost = () => {
   const [Images, setImages] = React.useState("");
 
   const postDetails = () => {
-    const data = FormData();
+    const data = new FormData();
     data.append("file", "images");
     data.append("upload_preset", "NUSEvent");
     data.append("could_name", "nusevent");
@@ -148,8 +148,8 @@ const CreatePost = () => {
               value={Title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <FlexibleDatePicker />
-            <FileUploadButton Images={Images} setImages={setImages} />
+            {/* <FlexibleDatePicker />
+            <FileUploadButton Images={Images} setImages={setImages} /> */}
             <TextField
               required
               label="Description"

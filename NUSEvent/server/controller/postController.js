@@ -1,7 +1,7 @@
 const Post = require("../models/post");
 
 exports.createPost = async (req, res) => {
-  const { title, description, photo } = req.body;
+  const { title, description, images } = req.body;
 
   if (!title || !description) {
     return res.status(400).json({ msg: "Please add all the required fields" });
@@ -14,9 +14,9 @@ exports.createPost = async (req, res) => {
   const post = new Post({
     title, //key & value r same (original-> title ： title)
     description,
-    photo,
+    images,
     //postedBy: req.Organiser,
-    organisedBy,
+    postedBy,
   });
 
   post

@@ -12,11 +12,11 @@ const postSchema = Schema({
     type: String,
     requred: true,
   },
-  photo: {
+  images: {
     type: String,
-    default: "no photo",
+    default: "no image",
   },
-  organisedBy: {
+  postedBy: {
     // type: ObjectId,
     // ref: "Organiser", //refer to
     //after login feature settle

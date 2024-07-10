@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/system";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -110,7 +110,7 @@ const FileUploadButton = () => {
             onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
           >
-            <Droppable droppableId="drop" type="group">
+            <Droppable droppableId="drop">
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
                   {/* Render Uploaded Images */}

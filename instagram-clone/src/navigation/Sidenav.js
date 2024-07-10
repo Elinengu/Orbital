@@ -13,11 +13,15 @@ import { Menu } from "@mui/material";
 function Sidenav() {
   return (
     <div className="sidenav">
-      <img
+      <image
+        className="sidenav__logo"
+        href="https://www.pngkey.com/png/full/828-8286178_mackeys-work-needs-no-elaborate-presentation-or-distracting.png"
+      />
+      {/* <img
         className="sidenav__logo"
         src="https://www.pngkey.com/png/full/828-8286178_mackeys-work-needs-no-elaborate-presentation-or-distracting.png"
         alt=""
-      />
+      /> */}
       <div className="sidenav_buttons">
         <button className="sidenav__button">
           {/*icons* (just use the imported icons like components*/}
