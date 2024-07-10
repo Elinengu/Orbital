@@ -3,3 +3,4 @@ delay todo
 2. create Organiser models for posting stuff lol or else just put text first
 3. consider adding a side nav later if got time for mobile access
 4. remember to turn off the unsigned option at cloudinary after implementing the login
+5. maybe can add sth like recurse weekly or monthly or custom for date

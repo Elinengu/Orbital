@@ -6,7 +6,11 @@ const { ObjectId } = mongoose.Schema.Types;
 const postSchema = Schema({
   title: {
     type: String,
-    requred: true,
+    required: true,
+  },
+  date: {
+    type: String,
+    required: true,
   },
   description: {
     type: String,

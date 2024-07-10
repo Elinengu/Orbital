@@ -1,10 +1,10 @@
 const Post = require("../models/post");
 
 exports.createPost = async (req, res) => {
-  const { title, description, images, postedBy } = req.body;
+  const { title, date, description, images, postedBy } = req.body;
   //make sure this align as the form input at CreatePost.js
 
-  if (!title || !description) {
+  if (!title || !description || !date) {
     return res.status(400).json({ msg: "Please add all the required fields" });
   }
 
@@ -14,6 +14,7 @@ exports.createPost = async (req, res) => {
 
   const post = new Post({
     title, //key & value r same (original-> title ： title)
+    date,
     description,
     images,
     //postedBy: req.Organiser,
