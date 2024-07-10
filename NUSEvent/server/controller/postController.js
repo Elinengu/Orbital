@@ -1,7 +1,8 @@
 const Post = require("../models/post");
 
 exports.createPost = async (req, res) => {
-  const { title, description, images } = req.body;
+  const { title, description, images, postedBy } = req.body;
+  //make sure this align as the form input at CreatePost.js
 
   if (!title || !description) {
     return res.status(400).json({ msg: "Please add all the required fields" });

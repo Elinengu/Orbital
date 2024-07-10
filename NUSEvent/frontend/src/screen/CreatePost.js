@@ -17,37 +17,38 @@ import { json } from "react-router-dom";
 
 const CreatePost = () => {
   /*frontend to backend integration*/
-  const [PostedBy, setPostedBy] = React.useState("");
-  const [Title, setTitle] = React.useState("");
-  const [Description, setDescription] = React.useState("");
+  const [postedBy, setPostedBy] = React.useState("");
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
   const [Images, setImages] = React.useState("");
 
-  const postDetails = () => {
-    const data = new FormData();
-    data.append("file", "images");
-    data.append("upload_preset", "NUSEvent");
-    data.append("could_name", "nusevent");
-    fetch(
-      "CLOUDINARY_URL=cloudinary://935293876958359:AHaMIT4pt6LnZVheBzV3pDRWlLQ@nusevent/images/upload",
-      {
-        method: "post",
-        body: data,
-      }
-    )
-      .then((res) => {
-        res.json();
-      })
-      .then((data) => console.log(data))
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const postDetails = () => {
+  //   const data = new FormData();
+  //   data.append("file", "images");
+  //   data.append("upload_preset", "NUSEvent");
+  //   data.append("could_name", "nusevent");
+  //   fetch(
+  //     "CLOUDINARY_URL=cloudinary://935293876958359:AHaMIT4pt6LnZVheBzV3pDRWlLQ@nusevent/images/upload",
+  //     {
+  //       method: "post",
+  //       body: data,
+  //     }
+  //   )
+  //     .then((res) => {
+  //       res.json();
+  //     })
+  //     .then((data) => console.log(data))
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   const postData = () => {
-    fetch("http://localhost:5000/create-post", {
+    //use proxy
+    fetch("/create-post", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ PostedBy, Title, Description }),
+      body: JSON.stringify({ postedBy, title, description }),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
@@ -108,7 +109,7 @@ const CreatePost = () => {
           //   console.log(email);
           onSubmit: () => {
             postData();
-            postDetails();
+            // postDetails();
             handleClose();
           },
         }}
@@ -127,12 +128,12 @@ const CreatePost = () => {
               required
               margin="dense"
               id="postedBy"
-              name="PostedBy" //input field
+              name="postedBy" //input field, matches the MongoDB schema field name
               label="Host Organisation"
               type="text"
               fullWidth
               variant="standard"
-              value={PostedBy}
+              value={postedBy}
               onChange={(e) => setPostedBy(e.target.value)}
             />
             <TextField
@@ -145,7 +146,7 @@ const CreatePost = () => {
               type="text"
               fullWidth
               variant="standard"
-              value={Title}
+              value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
             {/* <FlexibleDatePicker />
@@ -156,14 +157,26 @@ const CreatePost = () => {
               placeholder="put your description here"
               multiline
               minRows={4}
-              value={Description}
+              value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </Stack>
         </DialogContent>
         <DialogActions>
+          <Button type="submit">Submit</Button>
+          {/* it clear the console messages so uconvenient */}
+
+          {/* 
           <Button onClick={handleClose}>Cancel</Button>
-          <Button type="submit">Submit</Button>{" "}
+          <Button
+            onClick={() => {
+              postData();
+              handleClose();
+            }}
+          >
+            Submit
+          </Button>{" "}
+          */}
           {/*OnSubmit is attached directly to paper component */}
         </DialogActions>
       </Dialog>
