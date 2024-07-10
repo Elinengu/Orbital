@@ -9,7 +9,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { IconButton, Stack } from "@mui/material";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-import FlexibleDatePicker from "../components/FlexibleDatePicker";
+import FlexibleDatePicker from "../components/FlexibleDatePicker_edited";
 
 const CreatePost = () => {
   /*frontend to backend integration*/
@@ -19,7 +19,7 @@ const CreatePost = () => {
   const [images, setImages] = React.useState("");
 
   //for Date Picker
-  const [dates, setDates] = React.useState([null]);
+  // const [dates, setDates] = React.useState([null]);
 
   // const postDetails = () => {
   //   const data = new FormData();
@@ -47,7 +47,7 @@ const CreatePost = () => {
     fetch("/create-post", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ postedBy, title, description, dates }),
+      body: JSON.stringify({ postedBy, title, description }),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
@@ -148,7 +148,7 @@ const CreatePost = () => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <FlexibleDatePicker dates={dates} setDates={setDates} />
+            <FlexibleDatePicker />
             {/* <FileUploadButton images={Images} setImages={setImages} /> */}
             <TextField
               required

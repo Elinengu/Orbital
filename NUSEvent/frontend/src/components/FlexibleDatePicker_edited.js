@@ -11,26 +11,37 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { zhCN } from "date-fns/locale";
 
-function FlexibleDatePicker({ dates, setDates }) {
+function FlexibleDatePicker() {
+  const [dates, setDates] = useState([null]);
   const [isMultiple, setIsMultiple] = useState(false);
 
   const removeDatePicker = (index) => {
     const newDates = dates.filter((_, i) => i !== index);
-    setDates(newDates);
+    setDates(sortAndRemoveDuplicates(newDates));
   };
+
+  // const sortAndRemoveDuplicates = (dates) => {
+  //   const uniqueDates = Array.from(
+  //     new Set(dates.filter((date) => date !== null))
+  //   ); // Remove nulls and duplicates(use Set)
+  //   uniqueDates.sort((a, b) => new Date(a) - new Date(b)); // Sort dates
+  //   return uniqueDates;
+  // };
 
   const sortAndRemoveDuplicates = (dates) => {
     const uniqueDates = Array.from(
-      new Set(dates.filter((date) => date !== null))
-    ); // Remove nulls and duplicates(use Set)
-    uniqueDates.sort((a, b) => new Date(a) - new Date(b)); // Sort dates
+      new Set(
+        dates.filter((date) => date !== null).map((date) => date.toISOString())
+      )
+    ).map((date) => new Date(date)); // Remove nulls and duplicates(use Set) and convert back to Date objects
+    uniqueDates.sort((a, b) => a - b); // Sort dates
     return uniqueDates;
   };
 
   const handleDatesChange = (index, newDate) => {
     const newDates = [...dates];
     newDates[index] = newDate;
-    setDates(sortAndRemoveDuplicates(newDates));
+    setDates(sortAndRemoveDuplicates(newDates)); // Call here to remove duplicates and sort
   };
 
   const addDatePicker = () => {
