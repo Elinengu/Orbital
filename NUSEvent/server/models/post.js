@@ -8,18 +8,23 @@ const postSchema = Schema({
     type: String,
     required: true,
   },
-  dates: {
-    type: String,
-    required: true,
-  },
+  dates: [
+    {
+      type: Date,
+      required: true,
+    },
+  ],
   description: {
     type: String,
     requred: true,
   },
-  images: {
-    type: String,
-    default: "no image",
-  },
+  images: [
+    {
+      //urls
+      type: String,
+      default: "no image",
+    },
+  ],
   postedBy: {
     // type: ObjectId,
     // ref: "Organiser", //refer to

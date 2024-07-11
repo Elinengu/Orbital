@@ -25,13 +25,11 @@ const VisuallyHiddenInput = styled("input")({
   whiteSpace: "nowrap",
   width: 1,
 });
-const FileUploadButton = () => {
+const FileUploadButton = ({ images, setImages }) => {
   const [draggingIndex, setDraggingIndex] = useState(null);
 
-  const [images, setImages] = useState([]);
-
   const handleFileChange = (event) => {
-    const files = Array.from(event.target.files);
+    const files = Array.from(event.target.files); //fileList object(sth like immutable array)
     const newImages = files.map((file) => ({
       file,
       previewUrl: URL.createObjectURL(file),

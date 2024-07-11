@@ -11,22 +11,14 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { zhCN } from "date-fns/locale";
 
-function FlexibleDatePicker() {
-  const [dates, setDates] = useState([null]);
+function FlexibleDatePicker({ dates, setDates }) {
+  // const [dates, setDates] = useState([null]);
   const [isMultiple, setIsMultiple] = useState(false);
 
   const removeDatePicker = (index) => {
     const newDates = dates.filter((_, i) => i !== index);
     setDates(sortAndRemoveDuplicates(newDates));
   };
-
-  // const sortAndRemoveDuplicates = (dates) => {
-  //   const uniqueDates = Array.from(
-  //     new Set(dates.filter((date) => date !== null))
-  //   ); // Remove nulls and duplicates(use Set)
-  //   uniqueDates.sort((a, b) => new Date(a) - new Date(b)); // Sort dates
-  //   return uniqueDates;
-  // };
 
   const sortAndRemoveDuplicates = (dates) => {
     const uniqueDates = Array.from(

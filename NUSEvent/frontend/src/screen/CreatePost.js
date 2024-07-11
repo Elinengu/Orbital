@@ -1,5 +1,9 @@
-import * as React from "react";
+// import * as React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { styled } from "@mui/material/styles";
+import FileUploadButton from "../components/FileUploadButton";
+import { UploadFilesConcurrently } from "../helperFunction/helper";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -16,38 +20,56 @@ const CreatePost = () => {
   const [postedBy, setPostedBy] = React.useState("");
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
-  const [images, setImages] = React.useState("");
+  //dont use useState at async function might get run time error cause the update doesnt happen immediately
 
   //for Date Picker
-  // const [dates, setDates] = React.useState([null]);
+  const [dates, setDates] = useState([null]);
 
-  // const postDetails = () => {
-  //   const data = new FormData();
-  //   data.append("file", "images");
-  //   data.append("upload_preset", "NUSEvent");
-  //   data.append("could_name", "nusevent");
-  //   fetch(
-  //     "CLOUDINARY_URL=cloudinary://935293876958359:AHaMIT4pt6LnZVheBzV3pDRWlLQ@nusevent/images/upload",
-  //     {
-  //       method: "post",
-  //       body: data,
-  //     }
-  //   )
-  //     .then((res) => {
-  //       res.json();
-  //     })
-  //     .then((data) => console.log(data))
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  //for image uploader
+  const [images, setImages] = React.useState([]); //1 index consists of 1 image & 1 preview url
 
-  const postData = () => {
+  //handle images uploading
+  //a function returns array of response
+  const postImages = async () => {
+    const filesToUpload = images.map((image) => image.file); //remove preview url
+
+    // try {
+    //   const responses = await UploadFilesConcurrently(filesToUpload);
+    //   const newUrls = responses.map((response) => response.data.secure_url);
+    //   console.log(newUrls);
+    //   setUrls(newUrls);
+    //   return newUrls;
+    // } catch (error) {
+    //   console.error("Error uploading images:", error);
+    //   return [];
+    // }
+
+    UploadFilesConcurrently(filesToUpload)
+      .then((responses) => {
+        const newUrls = responses.map((response) => response.data.secure_url);
+        console.log(newUrls);
+        return newUrls;
+      })
+      .catch((error) => {
+        console.error("Error uploading images:", error);
+        return [];
+      });
+  };
+
+  const postData = async () => {
+    const urls = await postImages();
+
     //use proxy
     fetch("/create-post", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ postedBy, title, description }),
+      body: JSON.stringify({
+        postedBy,
+        title,
+        description,
+        dates,
+        images: urls,
+      }),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
@@ -108,7 +130,6 @@ const CreatePost = () => {
           //   console.log(email);
           onSubmit: () => {
             postData();
-            // postDetails();
             handleClose();
           },
         }}
@@ -148,8 +169,8 @@ const CreatePost = () => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <FlexibleDatePicker />
-            {/* <FileUploadButton images={Images} setImages={setImages} /> */}
+            <FlexibleDatePicker dates={dates} setDates={setDates} />
+            <FileUploadButton images={images} setImages={setImages} />
             <TextField
               required
               label="Description"
@@ -162,10 +183,9 @@ const CreatePost = () => {
           </Stack>
         </DialogContent>
         <DialogActions>
-          <Button type="submit">Submit</Button>
+          {/* <Button type="submit">Submit</Button> */}
           {/* it clear the console messages so uconvenient */}
 
-          {/* 
           <Button onClick={handleClose}>Cancel</Button>
           <Button
             onClick={() => {
@@ -174,8 +194,8 @@ const CreatePost = () => {
             }}
           >
             Submit
-          </Button>{" "}
-          */}
+          </Button>
+
           {/*OnSubmit is attached directly to paper component */}
         </DialogActions>
       </Dialog>
