@@ -16,8 +16,12 @@ import mao from "../../images/bichimao1.jpg";
 import CheckedIcon from "./checkedIcon";
 
 const label = { inputProps: { "aria-label": "add to bookmarked" } };
+const fallbackImage = { mao };
 
-export default function Post() {
+export default function Post({ postedBy, title, description, dates, images }) {
+  const imageUrl = images && images.length > 0 ? images[0] : fallbackImage;
+  console.log("Image URL:", imageUrl); //debugger
+
   return (
     <Box sx={{ marginBottom: 2, width: "100%" }}>
       <Card
@@ -69,26 +73,27 @@ export default function Post() {
             },
           }} // Use h6 or smaller variant
           subheaderTypographyProps={{ variant: "caption", marginLeft: "0" }} // Adjust subheader size if needed
-          title="Shrimp and Chorizo Paella testing testing"
-          subheader="September 14, 2016"
-
+          title={postedBy}
+          subheader={
+            dates && dates.length > 0
+              ? new Date(dates[0]).toLocaleDateString()
+              : "No dates available"
+          }
           // title="Shrimp and Chorizo Paella" //organiser or postedBy
           // subheader="September 14, 2016" //date
         />
         <CardMedia
           component="img"
           height="20%"
-          image={mao}
+          image={imageUrl}
           alt="OH NO WHERE'S MY BICHI MAO?"
         />
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
-            Lizard
+            {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+            {description}
           </Typography>
         </CardContent>
         <CardActions disableSpacing>

@@ -41,3 +41,14 @@ navbar originally created using Materialize then realise dont use it is faster
  8 July 2024
  - Template Literals
  -  label={`Date ${index + 1}`}
+
+ 11 July 2024
+ - solve the image uploading issue(undefined because didnt put await for async function) 
+  & upload images as file[] to cloudinary 
+  and get url as String[] to mongoDB
+
+12 July 2024
+ - use a long time to figure out why the data isnt being fetched correctly
+ - proxy doesnt work
+ - try cors
+ - oki just a simple change it works == why go use proxy haiz

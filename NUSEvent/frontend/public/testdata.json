@@ -1,0 +1,187 @@
+{
+  "posts": [
+    {
+      "dates": [],
+      "images": [],
+      "postedBy": "NUS",
+      "_id": "66826b6b433474f8ae158fb1",
+      "title": "testing title",
+      "description": "where s my console qwq",
+      "photo": "d2hhdCBzaG91bGQgSSBwdXQgaGVyZQ==",
+      "__v": 0
+    },
+    {
+      "dates": [],
+      "images": [],
+      "postedBy": "NUS",
+      "_id": "66826b81433474f8ae158fb3",
+      "title": "testing title",
+      "description": "where s my console qwq",
+      "photo": "d2hhdCBzaG91bGQgSSBwdXQgaGVyZQ==",
+      "__v": 0
+    },
+    {
+      "dates": [],
+      "images": [],
+      "postedBy": "NUS",
+      "_id": "66826b9e433474f8ae158fb5",
+      "title": "testing title",
+      "description": "where s my console qwq",
+      "photo": "d2hhdCBzaG91bGQgSSBwdXQgaGVyZQ==",
+      "__v": 0
+    },
+    {
+      "dates": [],
+      "_id": "668e2a22a9f6972b77bc22f9",
+      "title": "testTitle",
+      "description": "d",
+      "images": ["no image"],
+      "postedBy": "testPostedBy",
+      "__v": 0
+    },
+    {
+      "dates": [],
+      "_id": "668e2a93a9f6972b77bc22fb",
+      "title": "testTitle",
+      "description": "d",
+      "images": ["no image"],
+      "postedBy": "testPostedBy",
+      "__v": 0
+    },
+    {
+      "dates": [],
+      "_id": "668e2aeda9f6972b77bc22fd",
+      "title": "testTitle",
+      "description": "d",
+      "images": ["no image"],
+      "postedBy": "testPostedBy",
+      "__v": 0
+    },
+    {
+      "_id": "668e56fca9232f7b3ed48ca7",
+      "title": "testTitle",
+      "dates": ["2024-07-05T16:00:00.000Z"],
+      "description": "test 1 on 10July",
+      "images": ["no image"],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668e5704a9232f7b3ed48ca9",
+      "title": "testTitle",
+      "dates": ["2024-07-05T16:00:00.000Z", "2024-07-10T16:00:00.000Z"],
+      "description": "test 1 on 10July",
+      "images": ["no image"],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668e5785a9232f7b3ed48cab",
+      "title": "testTitle",
+      "dates": ["2024-06-30T16:00:00.000Z", "2024-07-11T16:00:00.000Z"],
+      "description": "test 4 on 10July",
+      "images": ["no image"],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668f9faa0dddac3fb03f53cc",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "11July \ntesting without images",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668f9fb90dddac3fb03f53ce",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "11July \ntesting with images",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668fa1260dddac3fb03f53d0",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "11July \ntesting with images 2nd try",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668faac563318942c406ca6b",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "11July \ntesting with images 3rd try",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668fad3b63318942c406ca6d",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "testing to upload image n send urls to mongoDB \n4th try",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668fb1bc63318942c406ca6f",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "testing to upload image n send urls to mongoDB \n5th try",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668fb20763318942c406ca71",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "testing to upload image n send urls to mongoDB \n6th try",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668fb24a63318942c406ca73",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "testing to upload image n send urls to mongoDB \n7th try",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668fb28363318942c406ca75",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "testing to upload image n send urls to mongoDB \n8th try",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668fb30e63318942c406ca77",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "testing to upload image n send urls to mongoDB \n9th try with 1 image",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    },
+    {
+      "_id": "668fb36263318942c406ca79",
+      "title": "testTitle",
+      "dates": ["2024-07-10T16:00:00.000Z"],
+      "description": "test with 1 image\n10th try",
+      "images": [],
+      "postedBy": "testHost",
+      "__v": 0
+    }
+  ]
+}

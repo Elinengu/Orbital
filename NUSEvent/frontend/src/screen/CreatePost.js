@@ -33,17 +33,6 @@ const CreatePost = () => {
   const postImages = async () => {
     const filesToUpload = images.map((image) => image.file); //remove preview url
 
-    // try {
-    //   const responses = await UploadFilesConcurrently(filesToUpload);
-    //   const newUrls = responses.map((response) => response.data.secure_url);
-    //   console.log(newUrls);
-    //   setUrls(newUrls);
-    //   return newUrls;
-    // } catch (error) {
-    //   console.error("Error uploading images:", error);
-    //   return [];
-    // }
-
     UploadFilesConcurrently(filesToUpload)
       .then((responses) => {
         const newUrls = responses.map((response) => response.data.secure_url);
@@ -57,23 +46,27 @@ const CreatePost = () => {
   };
 
   const postData = async () => {
-    const urls = await postImages();
+    try {
+      const urls = await postImages();
+      console.log("Image URLs:", urls);
 
-    //use proxy
-    fetch("/create-post", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        postedBy,
-        title,
-        description,
-        dates,
-        images: urls,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error("Error:", error));
+      //use proxy, even though I'm not sure when this proxy will work probably whens not
+      const response = await fetch("http://localhost:5000/create-post", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          postedBy,
+          title,
+          description,
+          dates,
+          images: urls,
+        }),
+      });
+      const data = await response.json();
+      console.log("Post created successfully:", data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   /*frontend design*/
@@ -128,10 +121,10 @@ const CreatePost = () => {
           //   const formJson = Object.fromEntries(formData.entries());
           //   const email = formJson.email;
           //   console.log(email);
-          onSubmit: () => {
-            postData();
-            handleClose();
-          },
+          // onSubmit: () => {
+          //   postData();
+          //   handleClose();
+          // },
         }}
       >
         <DialogTitle style={{ textAlign: "center" }}>
@@ -188,8 +181,9 @@ const CreatePost = () => {
 
           <Button onClick={handleClose}>Cancel</Button>
           <Button
-            onClick={() => {
-              postData();
+            onClick={async (event) => {
+              event.preventDefault();
+              await postData();
               handleClose();
             }}
           >
