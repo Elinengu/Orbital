@@ -1,7 +1,7 @@
 const Post = require("../models/post");
 
 exports.createPost = async (req, res) => {
-  const { title, dates, description, images, postedBy } = req.body;
+  const { title, dates, description, images, postedBy, timestamp } = req.body;
   //make sure this align as the form input at CreatePost.js
 
   if (!title || !description || !dates) {
@@ -19,6 +19,7 @@ exports.createPost = async (req, res) => {
     images,
     //postedBy: req.Organiser,
     postedBy,
+    timestamp,
   });
 
   post

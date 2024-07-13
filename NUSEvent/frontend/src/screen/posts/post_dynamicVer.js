@@ -15,11 +15,33 @@ import { Box, Button, Container } from "@mui/material";
 import mao from "../../images/bichimao1.jpg";
 import CheckedIcon from "./checkedIcon";
 
-const label = { inputProps: { "aria-label": "add to bookmarked" } };
-const fallbackImage = { mao };
+export default function Post({
+  postedBy,
+  title,
+  description,
+  dates,
+  images,
+  timestamp,
+}) {
+  function toFormattedTimestamp(timestamp) {
+    return new Date(timestamp).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+  }
 
-export default function Post({ postedBy, title, description, dates, images }) {
-  const imageUrl = images && images.length > 0 ? images[0] : fallbackImage;
+  function toFormattedDate(date) {
+    return new Date(date).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+  }
+
+  const hasValidImages =
+    Array.isArray(images) && images.length > 0 && images[0] !== "no image";
+  const imageUrl = hasValidImages ? images[0] : null;
   console.log("Image URL:", imageUrl); //debugger
 
   return (
@@ -74,23 +96,42 @@ export default function Post({ postedBy, title, description, dates, images }) {
           }} // Use h6 or smaller variant
           subheaderTypographyProps={{ variant: "caption", marginLeft: "0" }} // Adjust subheader size if needed
           title={postedBy}
+          // subheader={
+          //   dates && dates.length > 0
+          //     ? new Date(dates[0]).toLocaleDateString()
+          //     : "No dates available"
+          // }
           subheader={
-            dates && dates.length > 0
-              ? new Date(dates[0]).toLocaleDateString()
-              : "No dates available"
+            timestamp
+              ? toFormattedTimestamp(timestamp)
+              : "No timestamp available"
           }
           // title="Shrimp and Chorizo Paella" //organiser or postedBy
           // subheader="September 14, 2016" //date
         />
-        <CardMedia
-          component="img"
-          height="20%"
-          image={imageUrl}
-          alt="OH NO WHERE'S MY BICHI MAO?"
-        />
+        {imageUrl ? (
+          <CardMedia
+            component="img"
+            height="20%"
+            image={imageUrl}
+            alt="OH NO WHERE'S MY BICHI MAO?"
+          />
+        ) : (
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {description}
+            </Typography>
+          </CardContent>
+        )}
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
             {title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Date:
+            {dates && dates.length > 0
+              ? toFormattedDate(dates[0])
+              : "No dates available"}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {description}

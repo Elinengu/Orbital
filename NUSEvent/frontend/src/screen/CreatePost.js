@@ -49,6 +49,9 @@ const CreatePost = () => {
       const urls = await postImages();
       console.log("Image URLs:", urls);
 
+      // Generate the current timestamp
+      const timestamp = new Date();
+
       //use proxy, even though I'm not sure when this proxy will work probably whens not
       const response = await fetch("http://localhost:5000/create-post", {
         method: "POST",
@@ -59,6 +62,7 @@ const CreatePost = () => {
           description,
           dates,
           images: urls,
+          timestamp,
         }),
       });
       const data = await response.json();

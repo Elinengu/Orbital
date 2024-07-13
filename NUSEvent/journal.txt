@@ -52,3 +52,9 @@ navbar originally created using Materialize then realise dont use it is faster
  - proxy doesnt work
  - try cors
  - oki just a simple change it works == why go use proxy haiz
+
+ 13 July 2024 
+  - realise why the url is being returned as undefined
+  - because I'm using await with .then chain (should use return), so 
+  - nothing is being return from the postImages() function
+  - remember to create a new Date object when retrieve date from database

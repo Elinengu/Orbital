@@ -83,6 +83,7 @@ const Home = () => {
               description={x.description}
               dates={x.dates}
               images={x.images}
+              timestamp={x.timestamp}
             />
           </Grid>
         ))}
