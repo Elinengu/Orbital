@@ -22,7 +22,7 @@ const postSchema = Schema({
     {
       //urls
       type: String,
-      default: "no image",
+      default: "no images",
     },
   ],
   postedBy: {

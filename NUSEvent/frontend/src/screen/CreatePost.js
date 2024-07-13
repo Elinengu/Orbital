@@ -31,18 +31,17 @@ const CreatePost = () => {
   //handle images uploading
   //a function returns array of response
   const postImages = async () => {
-    const filesToUpload = images.map((image) => image.file); //remove preview url
+    try {
+      const filesToUpload = images.map((image) => image.file); //remove preview url
+      const responses = await UploadFilesConcurrently(filesToUpload);
 
-    UploadFilesConcurrently(filesToUpload)
-      .then((responses) => {
-        const newUrls = responses.map((response) => response.data.secure_url);
-        console.log(newUrls);
-        return newUrls;
-      })
-      .catch((error) => {
-        console.error("Error uploading images:", error);
-        return [];
-      });
+      const newUrls = responses.map((response) => response.data.secure_url);
+      console.log(newUrls);
+      return newUrls;
+    } catch (error) {
+      console.error("Error uploading images:", error);
+      return [];
+    }
   };
 
   const postData = async () => {
