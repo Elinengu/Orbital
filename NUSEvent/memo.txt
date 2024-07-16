@@ -5,3 +5,4 @@ delay todo
 4. remember to turn off the unsigned option at cloudinary after implementing the login
 5. maybe can add sth like recurse weekly or monthly or custom for date
 6. add alert like "this date is added before" / "created the post successfully"
+7. might include slug so that the url generated will be easier to be read

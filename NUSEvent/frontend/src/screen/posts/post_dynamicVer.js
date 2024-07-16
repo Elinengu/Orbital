@@ -11,9 +11,10 @@ import Typography from "@mui/material/Typography";
 import { grey, lightBlue, red } from "@mui/material/colors";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Box, Button, Container } from "@mui/material";
+import { Box, Button, Container, Link } from "@mui/material";
 import mao from "../../images/bichimao1.jpg";
 import CheckedIcon from "./checkedIcon";
+// import { Link } from "react-router-dom";
 
 export default function Post({
   postedBy,
@@ -22,6 +23,7 @@ export default function Post({
   dates,
   images,
   timestamp,
+  _id,
 }) {
   function toFormattedTimestamp(timestamp) {
     return new Date(timestamp).toLocaleDateString("en-GB", {
@@ -110,12 +112,14 @@ export default function Post({
           // subheader="September 14, 2016" //date
         />
         {imageUrl ? (
-          <CardMedia
-            component="img"
-            height="20%"
-            image={imageUrl}
-            alt="OH NO WHERE'S MY BICHI MAO?"
-          />
+          <Link href={`/post/${_id}`}>
+            <CardMedia
+              component="img"
+              height="20%"
+              image={imageUrl}
+              alt="OH NO WHERE'S MY BICHI MAO?"
+            />
+          </Link>
         ) : (
           <CardContent>
             <Typography variant="body2" color="text.secondary">
@@ -125,7 +129,9 @@ export default function Post({
         )}
         <CardContent>
           <Typography gutterBottom variant="h6" component="div">
-            {title}
+            <Link href={`/post/${_id}`} underline="hover">
+              {title}
+            </Link>
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Date:

@@ -2,8 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 // import "./Home.css";
 // import Navbar from "../../components/Navbar";
 import Post from "../posts/post_dynamicVer";
-import { Grid, createTheme, ThemeProvider } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Grid, createTheme, ThemeProvider, Link } from "@mui/material";
+// import { Link } from "react-router-dom";
 
 //the page that displays all the posts
 //following the tut from CODERSNEVERQUIT
@@ -84,6 +84,7 @@ const Home = () => {
               dates={x.dates}
               images={x.images}
               timestamp={x.timestamp}
+              _id={x._id}
             />
           </Grid>
         ))}

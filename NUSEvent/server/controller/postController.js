@@ -47,3 +47,15 @@ exports.getAllPosts = async (req, res) => {
         .json({ msg: "An error occurred while fetching the posts" });
     });
 };
+
+exports.getSinglePost = async (req, res) => {
+  const { id } = req.params;
+  Post.findById(id)
+    .then((post) => {
+      res.json({ post });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ msg: "An error occurred while finding the post" });
+    });
+};
