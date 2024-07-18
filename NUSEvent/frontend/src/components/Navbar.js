@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.png";
 import "./Navbar.css";
+import CreatePost from "../screen/CreatePost";
 
 const NavBar = () => {
   return (
@@ -17,6 +18,7 @@ const NavBar = () => {
             alt="NUSEvent"
           ></img>
         </Link>
+        <CreatePost />
         {/* <ul id="nav-mobile" className="right hide-on-med-and-down"></ul> for sidenav in future*/}
       </nav>
     </div>

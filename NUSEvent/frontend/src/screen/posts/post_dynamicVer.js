@@ -70,9 +70,8 @@ export default function Post({
                 height: 24,
                 fontSize: 10,
               }}
-              aria-label="recipe"
             >
-              R
+              {postedBy ? postedBy.charAt(0) : "R"}
             </Avatar>
           }
           sx={{

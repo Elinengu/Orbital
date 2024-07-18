@@ -54,3 +54,11 @@ export async function UploadFilesSequentially(filesToUpload) {
 // uploadFilesSequentially(filesToUpload).then((urls) => {
 //   console.log(urls); // Array of URLs in the correct order
 // });
+
+export function toFormattedDate(date) {
+  return new Date(date).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+}

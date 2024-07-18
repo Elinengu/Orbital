@@ -52,7 +52,7 @@ exports.getSinglePost = async (req, res) => {
   const { id } = req.params;
   Post.findById(id)
     .then((post) => {
-      res.json({ post });
+      res.json({ post }); //key & wrapping data in an object
     })
     .catch((err) => {
       console.log(err);

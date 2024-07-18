@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 // import "./Home.css";
 // import Navbar from "../../components/Navbar";
 import Post from "../posts/post_dynamicVer";
-import { Grid, createTheme, ThemeProvider, Link } from "@mui/material";
+import { Grid, createTheme, ThemeProvider } from "@mui/material";
 // import { Link } from "react-router-dom";
 
 //the page that displays all the posts

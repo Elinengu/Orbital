@@ -9,7 +9,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     {/* <testing the CreatePost component> */}
-    <CreatePost />
     <App />
   </React.StrictMode>
 );
